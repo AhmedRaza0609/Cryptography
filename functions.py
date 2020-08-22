@@ -43,7 +43,7 @@ def Atbash(txt):
             ans += letter
     return ans
 
-def Caeser(txt, method=None):
+def Caeser(txt, method=None, disallow=False):
     if method == 'Encrypt':
         key = st.slider('Choose the key:', min_value=0, max_value=25)
         ans = ''
@@ -56,7 +56,10 @@ def Caeser(txt, method=None):
                 ans += letter
         return ans
     if method == 'Decrypt':
-        keyorno = st.radio("Do you want to provide a key (Yes) or Let the Program decrypt on its own (No)",('Yes', 'No'))
+        if disallow == False:
+            keyorno = st.radio("Do you want to provide a key (Yes) or Let the Program decrypt on its own (No)",('Yes', 'No'))
+        else:
+            keyorno = 'Yes'
         decrypted = ''
         if keyorno == 'Yes':
             decryptkey = st.slider('Choose the key:', min_value=0, max_value=25)
